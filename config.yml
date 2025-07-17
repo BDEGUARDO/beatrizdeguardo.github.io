@@ -1,0 +1,23 @@
+backend:
+  name: github
+ auth_scope: repo
+
+ repo: BDEGUARDO/beatrizdeguardo-web
+  branch: main
+  site_domain: euphonious-fenglisu-d22d7d.netlify.app
+
+media_folder: "img"
+public_folder: "/img"
+
+collections:
+  - name: "abstracto"
+    label: "Abstracto"
+    folder: "abstracto"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Imagen", name: "image", widget: "image" }
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Técnica", name: "technique", widget: "string" }
+      - { label: "Medidas", name: "size", widget: "string" }
+      - { label: "Descripción", name: "description", widget: "text" }

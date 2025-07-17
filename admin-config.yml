@@ -1,0 +1,32 @@
+admin/config.yml
+backend:
+  name: github
+  repo: BDEGUARDO/beatrizdeguardo-web
+  branch: main
+
+media_folder: "img"
+public_folder: "/img"
+
+collections:
+  - name: "abstracto"
+    label: "Abstracto"
+    folder: "abstracto"
+    create: true
+    slug: "{{slug}}"
+    sortable_fields: ["title"]
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Técnica", name: "tecnica", widget: "string" }
+      - { label: "Medidas", name: "medidas", widget: "string" }
+      - { label: "Año", name: "year", widget: "string" }
+      - { label: "Descripción", name: "descripcion", widget: "text" }
+      - { label: "Imagen", name: "imagen", widget: "image" }
+  - name: "figurativo"
+    label: "Figurativo"
+    folder: "figurativo"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Imagen", name: "imagen", widget: "image" }
+  # (Repite para figurativo_eterico, etnico, poesia, sobre_la_artista, contacto…)
