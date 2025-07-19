@@ -1,23 +1,82 @@
 backend:
-  name: github
- auth_scope: repo
-
- repo: BDEGUARDO/beatrizdeguardo-web
+  name: git-gateway
   branch: main
-  site_domain: euphonious-fenglisu-d22d7d.netlify.app
 
-media_folder: "img"
-public_folder: "/img"
+media_folder: "img/uploads"
+public_folder: "/img/uploads"
 
 collections:
+  - name: "figurativo"
+    label: "Figurativo"
+    folder: "figurativo"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Técnica", name: "technique", widget: "string" }
+      - { label: "Medidas", name: "size", widget: "string" }
+      - { label: "Descripción", name: "description", widget: "text" }
+      - { label: "Imagen", name: "image", widget: "image" }
+
   - name: "abstracto"
     label: "Abstracto"
     folder: "abstracto"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Imagen", name: "image", widget: "image" }
       - { label: "Título", name: "title", widget: "string" }
       - { label: "Técnica", name: "technique", widget: "string" }
       - { label: "Medidas", name: "size", widget: "string" }
       - { label: "Descripción", name: "description", widget: "text" }
+      - { label: "Imagen", name: "image", widget: "image" }
+
+  - name: "etnico"
+    label: "Étnico"
+    folder: "etnico"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Técnica", name: "technique", widget: "string" }
+      - { label: "Medidas", name: "size", widget: "string" }
+      - { label: "Descripción", name: "description", widget: "text" }
+      - { label: "Imagen", name: "image", widget: "image" }
+
+  - name: "eterico"
+    label: "Figurativo etérico"
+    folder: "eterico"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Técnica", name: "technique", widget: "string" }
+      - { label: "Medidas", name: "size", widget: "string" }
+      - { label: "Descripción", name: "description", widget: "text" }
+      - { label: "Imagen", name: "image", widget: "image" }
+
+  - name: "poesia"
+    label: "Poesía"
+    folder: "poesia"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Texto", name: "body", widget: "markdown" }
+
+  - name: "artista"
+    label: "Sobre la artista"
+    files:
+      - file: "contenido/sobre-la-artista.md"
+        label: "Sobre la artista"
+        name: "sobre_la_artista"
+        fields:
+          - { label: "Contenido", name: "body", widget: "markdown" }
+
+  - name: "contacto"
+    label: "Contacto"
+    files:
+      - file: "contenido/contacto.md"
+        label: "Formulario de contacto"
+        name: "contacto"
+        fields:
+          - { label: "Texto de contacto", name: "body", widget: "markdown" }
