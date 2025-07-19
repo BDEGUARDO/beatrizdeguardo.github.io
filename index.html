@@ -1,193 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Beatriz De Guardo</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-    }
-
-    header {
-      position: relative;
-      background-image: url('portada.jpg');
-      background-size: cover;
-      background-position: center;
-      height: 60vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-    }
-
-    header h1 {
-      font-size: 3em;
-      margin: 0;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
-    }
-
-    nav {
-      margin-top: 15px;
-      background-color: rgba(0, 0, 0, 0.4);
-      padding: 10px 20px;
-      border-radius: 10px;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    main {
-      padding: 40px 20px;
-      text-align: center;
-      color: #ccc;
-    }
-
-    .mi-foto {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 30px auto 10px;
-      display: block;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #666;
-      font-size: 0.9em;
-    }
-  </style>
-</head>
-
-<body>
-
-  <header>
-    <h1>Beatriz De Guardo</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Galería de Arte de Beatriz</title>
+  </head>
+  <body>
+    <h1>Galería de Arte de Beatriz</h1>
     <nav>
-      <nav>
- <nav>
-  <a href="#abstracto">Abstracto</a>
-  <a href="#figurativo">Figurativo</a>
-  <a href="#eterico">Etérico</a>
-  <a href="#unico">Único</a>
-  <a href="#poesia">Poesía</a>
-  <a href="#artista">Sobre la artista</a>
-  <a href="#contacto">Contacto</a>
-</nav>
-
-</nav>
-
+      <ul>
+        <li><a href="/figurativo">Figurativo</a></li>
+        <li><a href="/abstracto">Abstracto</a></li>
+        <li><a href="/etnico">Étnico</a></li>
+        <li><a href="/figurativo-eterico">Figurativo Etérico</a></li>
+        <li><a href="/poesia">Poesía</a></li>
+        <li><a href="/sobre-la-artista">Sobre la artista</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+      </ul>
     </nav>
-  </header>
-   <main>
-<section id="abstracto" style="padding: 40px; background-color: #f6f6f6;">
-  <h2 style="text-align: center;">Obras abstractas</h2>
-  <div id="galeria-abstracto" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;"></div>
-</section>
-
-<script>
-  fetch('abstracto')
-    .then(response => response.text())
-    .then(text => {
-      const parser = new DOMParser();
-      const html = parser.parseFromString(text, 'text/html');
-      const files = [...html.querySelectorAll('a')].map(a => a.href).filter(href => href.endsWith('.md'));
-      
-      files.forEach(file => {
-        fetch(file)
-          .then(res => res.text())
-          .then(content => {
-            const imageMatch = content.match(/image:\s*(.*)/);
-            const titleMatch = content.match(/title:\s*(.*)/);
-            const techniqueMatch = content.match(/technique:\s*(.*)/);
-            const sizeMatch = content.match(/size:\s*(.*)/);
-            const descriptionMatch = content.match(/description:\s*["']?([\s\S]*?)["']?$/);
-
-            const div = document.createElement('div');
-            div.style = 'max-width: 300px; text-align: center;';
-            div.innerHTML = `
-              <img src="${imageMatch?.[1]?.trim()}" alt="${titleMatch?.[1]}" style="max-width: 100%;">
-              <h3>${titleMatch?.[1] || ''}</h3>
-              <p><strong>Técnica:</strong> ${techniqueMatch?.[1] || ''}</p>
-              <p><strong>Medidas:</strong> ${sizeMatch?.[1] || ''}</p>
-              <p>${descriptionMatch?.[1] || ''}</p>
-            `;
-            document.getElementById('galeria-abstracto').appendChild(div);
-          });
-      });
-    });
-</script>
-
-
-    
-    <p>Obras que surgen desde la no-forma. Vibraciones, color y gesto libre.</p>
-    <img src="cuadro1.jpg" alt="Cuadro abstracto 1">
-    <!-- Más cuadros -->
-  </section>
-
-  <section id="figurativo">
-    <h2>Figurativo</h2>
-    <p>Lo simbólico y lo visible. Cuerpo, rostro, alma y materia.</p>
-    <img src="cuadro2.jpg" alt="Cuadro figurativo 1">
-  </section>
-
-  <!-- Resto de secciones igual -->
-</main>
-
-  </main>
-<section id="abstracto">
-  <h2>Abstracto</h2>
-  <p>Aquí irán tus obras de arte abstracto.</p>
-</section>
-
-<section id="figurativo">
-  <h2>Figurativo</h2>
-  <p>Aquí se mostrarán tus obras figurativas.</p>
-</section>
-
-<section id="eterico">
-  <h2>Etérico</h2>
-  <p>Obras con inspiración sutil, luminosa, intangible.</p>
-</section>
-
-<section id="unico">
-  <h2>Único</h2>
-  <p>Obras inclasificables, que no entran en categorías.</p>
-</section>
-
-<section id="poesia">
-  <h2>Poesía</h2>
-  <p>Poemas que acompañan tu obra. También pueden estar en inglés si lo deseas.</p>
-</section>
-
-<section id="sobre">
-  <h2>Sobre la artista</h2>
-  <p>Un breve texto sobre ti, Beatriz, el proceso, el alma detrás de la obra.</p>
-</section>
-
-<section id="contacto">
-  <h2>Contacto</h2>
-  <p>Aquí irá tu email o un pequeño formulario de contacto si lo quieres añadir más adelante.</p>
-</section>
-
-  <footer>
-    © Beatriz De Guardo
-  </footer>
-
-</body>
+    <main>
+      <section>
+        <h2>Bienvenidos</h2>
+        <p>Explora el universo creativo de Beatriz a través de sus cuadros, versos y visiones. Este espacio es una invitación a mirar más allá de las formas, hacia el alma misma del arte.</p>
+      </section>
+    </main>
+  </body>
 </html>
